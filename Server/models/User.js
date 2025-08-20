@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema(
     },
     additionalDetails: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
+      required: true,// temporary nhi to phr true hi rhega
       ref: "Profile",
     },
     courses: [

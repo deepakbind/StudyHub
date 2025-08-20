@@ -18,6 +18,10 @@ const PORT = process.env.PORT || 4000;
 
 // Loading environment variables from .env file
 dotenv.config();
+// require("dotenv").config();
+// console.log("From index.js ->", process.env.RAZORPAY_KEY_ID, process.env.RAZORPAY_KEY_SECRET);
+
+// require("dotenv").config();  
 
 // Connecting to database
 database.connect();
