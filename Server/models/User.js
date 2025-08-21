@@ -75,3 +75,74 @@ const userSchema = new mongoose.Schema(
 
 // Export the Mongoose model for the user schema, using the name "user"
 module.exports = mongoose.model("user", userSchema)
+
+
+
+// const mongoose = require("mongoose");
+
+// const userSchema = new mongoose.Schema(
+//   {
+//     firstName: {
+//       type: String,
+//       required: true,
+//       trim: true,
+//     },
+//     lastName: {
+//       type: String,
+//       required: true,
+//       trim: true,
+//     },
+//     email: {
+//       type: String,
+//       required: true,
+//       trim: true,
+//       unique: true, // ✅ prevent duplicate users
+//     },
+//     password: {
+//       type: String,
+//       required: true,
+//       select: false, // ✅ security: password won't return in queries
+//     },
+//     accountType: {
+//       type: String,
+//       enum: ["Admin", "Student", "Instructor"],
+//       required: true,
+//     },
+//     active: {
+//       type: Boolean,
+//       default: true,
+//     },
+//     approved: {
+//       type: Boolean,
+//       default: true,
+//     },
+//     additionalDetails: {
+//       type: mongoose.Schema.Types.ObjectId,
+//       ref: "Profile", // ✅ not required by default
+//     },
+//     courses: [
+//       {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "Course",
+//       },
+//     ],
+//     token: {
+//       type: String,
+//     },
+//     resetPasswordExpires: {
+//       type: Date,
+//     },
+//     image: {
+//       type: String,
+//     },
+//     courseProgress: [
+//       {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "courseProgress",
+//       },
+//     ],
+//   },
+//   { timestamps: true }
+// );
+
+// module.exports = mongoose.model("User", userSchema);

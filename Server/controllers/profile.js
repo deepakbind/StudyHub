@@ -114,34 +114,87 @@ exports.getAllUserDetails = async (req, res) => {
   }
 }
 
+// exports.updateDisplayPicture = async (req, res) => {
+//   try {
+//     console.log("req.files:", req.files);
+//     console.log("FOLDER_NAME:", process.env.FOLDER_NAME);
+
+//     const displayPicture = req.files.displayPicture
+//     console.log("displayPicture:", displayPicture);
+//     console.log("")
+//     const userId = req.user.id
+//     const image = await uploadImageToCloudinary(
+//       displayPicture,
+//       process.env.FOLDER_NAME,
+//       1000,
+//       1000
+//     )
+//     console.log(image)
+//     const updatedProfile = await User.findByIdAndUpdate(
+//       { _id: userId },
+//       { image: image.secure_url },
+//       { new: true }
+//     )
+//     res.send({
+//       success: true,
+//       message: `Image Updated successfully`,
+//       data: updatedProfile,
+//     })
+//   } catch (error) {
+//     return res.status(500).json({
+//       success: false,
+//       message: error.message,
+//     })
+//   }
+// }
+
 exports.updateDisplayPicture = async (req, res) => {
   try {
-    const displayPicture = req.files.displayPicture
-    const userId = req.user.id
+    console.log("req.files:", req.files);
+    console.log("FOLDER_NAME:", process.env.FOLDER_NAME);
+
+    const displayPicture = req.files?.displayPicture;
+    if (!displayPicture) {
+      return res.status(400).json({
+        success: false,
+        message: "No file uploaded"
+      });
+    }
+
+    const userId = req.user.id;
+
+    // Upload image to Cloudinary
     const image = await uploadImageToCloudinary(
-      displayPicture,
+      displayPicture.tempFilePath, // Must pass tempFilePath
       process.env.FOLDER_NAME,
-      1000,
-      1000
-    )
-    console.log(image)
+      1000, // height (optional)
+      1000   // quality must be <= 100
+    );
+
+    console.log("Cloudinary result:", image);
+
+    // Update user profile with new image URL
     const updatedProfile = await User.findByIdAndUpdate(
-      { _id: userId },
+      userId,
       { image: image.secure_url },
       { new: true }
-    )
-    res.send({
+    );
+
+    res.json({
       success: true,
-      message: `Image Updated successfully`,
-      data: updatedProfile,
-    })
+      message: "Image updated successfully",
+      data: updatedProfile
+    });
+
   } catch (error) {
-    return res.status(500).json({
+    console.error("Error updating display picture:", error);
+    res.status(500).json({
       success: false,
-      message: error.message,
-    })
+      message: error.message
+    });
   }
-}
+};
+
 
 exports.getEnrolledCourses = async (req, res) => {
   try {

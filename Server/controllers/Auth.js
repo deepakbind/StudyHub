@@ -304,6 +304,7 @@ require("dotenv").config();
 // ================== SIGNUP ==================
 exports.signup = async (req, res) => {
   try {
+    //  console.log("Signup request body:", req.body);
     const { firstName, lastName, email, password, confirmPassword, accountType, contactNumber, otp } = req.body;
 
     if (!firstName || !lastName || !email || !password || !confirmPassword || !otp) {

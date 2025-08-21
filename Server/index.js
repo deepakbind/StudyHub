@@ -38,7 +38,7 @@ app.use(
 app.use(
 	fileUpload({
 		useTempFiles: true,
-		tempFileDir: "/tmp/",
+		tempFileDir: "/tmp/",  // temporary storage for uploaded files
 	})
 );
 
