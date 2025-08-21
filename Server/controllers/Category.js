@@ -5,6 +5,8 @@ function getRandomInt(max) {
 }
 exports.createCategory = async (req, res) => {
   try {
+    console.log("👉 Headers:", req.headers);
+    console.log("👉 Raw Body:", req.body);
     const { name, description } = req.body
     if (!name) {
       return res
@@ -17,7 +19,7 @@ exports.createCategory = async (req, res) => {
     })
     console.log(CategorysDetails)
     return res.status(200).json({
-      success: true,
+      success: true,//true
       message: "Categorys Created Successfully",
     })
   } catch (error) {
