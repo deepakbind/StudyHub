@@ -3,7 +3,9 @@ const CourseProgress = require("../models/CourseProgress")
 
 const Course = require("../models/Course")
 const User = require("../models/User")
-const { uploadImageToCloudinary } = require("../utils/imageUploader")
+// const { uploadImageToCloudinary } = require("../utils/imageUploader")
+const { uploadFileToCloudinary } = require("../utils/imageUploader");
+
 const mongoose = require("mongoose")
 const { convertSecondsToDuration } = require("../utils/secToDuration")
 // Method for updating a profile
@@ -164,11 +166,11 @@ exports.updateDisplayPicture = async (req, res) => {
     const userId = req.user.id;
 
     // Upload image to Cloudinary
-    const image = await uploadImageToCloudinary(
+    const image = await uploadFileToCloudinary(
       displayPicture.tempFilePath, // Must pass tempFilePath
       process.env.FOLDER_NAME,
       1000, // height (optional)
-      1000   // quality must be <= 100
+      100   // quality must be <= 100
     );
 
     console.log("Cloudinary result:", image);

@@ -88,7 +88,8 @@ const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const { cloudinaryConnect } = require("./config/cloudinary");
 const database = require("./config/database");
-
+// const fileUpload = require("express-fileupload");
+// const path = require("path");
 // Importing routes
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile");
@@ -108,6 +109,8 @@ database.connect();
 
 // ✅ Middlewares
 app.use(express.json());
+// changed and check position
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
 	cors({
@@ -121,6 +124,11 @@ app.use(
 	fileUpload({
 		useTempFiles: true,
 		tempFileDir: "/tmp/", // temporary storage for uploaded files
+		createParentPath: true,// new changed
+		// // tempFileDir: "C:/Users/Deepak/AppData/Local/Temp/", // Windows compatible temp folder
+		// // tempFileDir: path.join(__dirname, "tmp"), // Windows-friendly temp folder
+		// tempFilePath: 'C:\\Users\\Deepak Kumar Bind\\OneDrive\\Desktop\\studyhub\\Server\\tmp\\tmp-2-105201755849767263'
+
 	})
 );
 
@@ -134,6 +142,7 @@ app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach", contactUsRoute);
 app.use("/api/v1/categories", categoryRoutes);
+
 
 // ✅ Testing the server
 app.get("/", (req, res) => {

@@ -1,0 +1,18 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\Deepak Kumar Bind\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.8.2
+2 info using node@v18.20.3
+3 silly config load:file:C:\Users\Deepak Kumar Bind\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Deepak Kumar Bind\OneDrive\Desktop\studyhub\.npmrc
+5 silly config load:file:C:\Users\Deepak Kumar Bind\.npmrc
+6 silly config load:file:C:\Users\Deepak Kumar Bind\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm start
+8 verbose argv "start"
+9 verbose logfile logs-max:10 dir:C:\Users\Deepak Kumar Bind\OneDrive\Desktop\studyhub\.npm-cache\_logs\2025-08-27T00_24_49_683Z-
+10 verbose logfile C:\Users\Deepak Kumar Bind\OneDrive\Desktop\studyhub\.npm-cache\_logs\2025-08-27T00_24_49_683Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd C:\Users\Deepak Kumar Bind\OneDrive\Desktop\studyhub
+13 verbose os Windows_NT 10.0.22631
+14 verbose node v18.20.3
+15 verbose npm  v10.8.2
+16 verbose exit 3221225786
+17 verbose code 3221225786
