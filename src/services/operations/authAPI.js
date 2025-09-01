@@ -14,6 +14,7 @@ const {
   RESETPASSWORD_API,
 } = endpoints
 
+// const BASE_URL = "http://localhost:4000"; // backend ka port
 export function sendOtp(email, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
